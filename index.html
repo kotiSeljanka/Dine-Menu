@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dine Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="index.js"></script>
+
+</head>
+<body>
+    <div class="winnerScreen" id="winnerScreen">
+        <div class="closeScreen" onclick="closeScreen()">X</div>
+        <div class="congratulationText">Nälkä ei voita! Tänään syödään:</div>
+        <div class="dishResult" id="dishResult"></div>
+        <div class="haveANiceMeal">🍕🍕🍕Hyvää ruokahalua!🍕🍕🍕</div>
+    </div>
+    <div class="bodyWrapper">
+        <h1 class="question">Mitä tänään syötäisiin?</h1>
+        <form class="styledForm" action="">
+            <div class="inputs">
+                <div class="inputEntity">
+                    <div class="ballThingy" onclick="toggleMarked(this)"></div>
+                    <input type="text" class="styledInput" id="dishFilling" placeholder="Putkispagetti">
+                </div>
+                <div class="inputEntity">
+                    <div class="ballThingy" onclick="toggleMarked(this)"></div>
+                    <input type="text" class="styledInput" id="dishSide" placeholder="Liekkisiipi">
+                </div>
+                <div class="inputEntity">
+                    <div class="ballThingy" onclick="toggleMarked(this)"></div>
+                    <input type="text" class="styledInput" id="dishSalad" placeholder="Kreikkalainen">
+                </div>
+            </div>
+            <input type="button" class="randomizeButton" value=" " onclick="randomizeInputs()">
+        </form>
+    </div>
+</body>
+</html>

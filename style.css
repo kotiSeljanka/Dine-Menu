@@ -1,0 +1,240 @@
+* { 
+    box-sizing: border-box;
+    font-family: Inter;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(./static/Inter-Medium.ttf);
+}
+
+:root {
+    --color-background-main: #E9E9E9;
+    --color-background-darker: #D9D9D9;
+    --color-stroke: #BFBFBF;
+    --color-stroke-darker: #a9a9a9;
+    --color-success: #4BB543;
+    --stroke-thickness: 3px;
+    --button-pixels: 20px;
+    --button-pixels-middle: 30px;
+    --button-pixels-double: 40px;
+    --space-between-inputs: 70vw;
+}
+
+body {
+    background-color: var(--color-background-main);
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* /// MAIN PAGE /// */
+
+/* Used to separate main plane from content plane, so margin and padding could be set for body. */
+.bodyWrapper {
+    background-color: var(--color-background-main);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    min-height: 40vh;
+}
+
+
+/* MAIN PAGE: TOP */
+
+/* Main text seen on the page. */
+.question {
+    font-size: 7vh;
+    text-align: center;
+    cursor: default;
+}
+
+
+/* MAIN PAGE: INPUT*/
+
+/* Container for all input-elements, including randomize-button. */
+.styledForm {
+    width: var(--space-between-inputs);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 5vh;
+}
+
+/* Container for the three dish-inputs. */
+.inputs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Three buttons to lock the answer in each input. Built as a div, not as an input. */
+.ballThingy {
+    width: var(--button-pixels);
+    height: var(--button-pixels);
+    background-color: var(--color-background-darker);
+    border: var(--stroke-thickness) solid var(--color-stroke);
+
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(10px, 7px);
+    transition: background-color 0.5s;
+}
+
+/* Class set on the lock-button whent the button is marked. Paints the button green. */
+.redBackground {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+
+    transition: background-color 0.3s, border-color 0.1s;
+}
+
+/* Three dish-inputs. */
+.styledInput {
+    background-color: var(--color-background-main);
+    border-color: var(--color-stroke);
+    height: calc(var(--button-pixels) + 15px);
+
+    max-width: 20vw;
+    border-radius: 20px;
+    font-size: 2vh;
+    text-indent: 35px;
+
+    box-shadow: none;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Placeholder text for each dish-input. */
+.styledInput::placeholder {
+    color: var(--color-stroke);
+    text-indent: 35px;
+}
+
+/* Class set on a dish-input when its button is marked. Gives shadow to the input window. */
+.toggleParent {
+    color: black;
+    box-shadow: 4px 4px 5px var(--color-stroke);
+}
+
+
+/* MAIN PAGE: BOTTOM BUTTON */
+
+/* Button to chose a value for each dish-input that is not locked. */
+.randomizeButton {
+    background-color: var(--color-background-darker);
+    width: var(--button-pixels-middle);
+    height: var(--button-pixels-middle);
+    border: 4px solid var(--color-stroke);
+
+    border-radius: 50%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Little styling for the button above.*/
+.randomizeButton:hover {
+    background-color: var(--color-stroke);
+}
+
+/* Little more styling for the button above. */
+.randomizeButton:active {
+    background-color: var(--color-stroke-darker);
+    transition: background-color 0s;
+}
+
+
+
+/* /// ENDING SCREEN /// */
+
+/* Container for ending screen elements. Gets visible when all of the three dish-inputs are locked. */
+.winnerScreen {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    display: block;
+    cursor: default;
+
+    transform: translateY(-100vh);
+    transition: transform 1s ease-in-out;
+}
+
+/* 
+Class set on the ending screen container when all of the three dish-inputs are locked. 
+Brings the ending screen to the page. 
+*/
+.screenVisible {
+    transform: translateY(0vh);
+}
+
+/* Container for the button that closes the ending screen. */
+.closeScreen {
+    width: var(--button-pixels-double);
+    height: var(--button-pixels-double);
+
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: grey;
+    cursor: pointer;
+}
+
+
+/* ENDING SCREEN: TEXT */
+
+/* Styling for the text on the top of the ending screen. */
+.congratulationText {
+    margin-top: 30vh;
+    font-size: 3vh;
+}
+
+/* Styling for the text in the middle of the ending screen. */
+.dishResult {
+    margin-top: 2vh;
+    font-size: 7vh;
+    font-weight: 600;
+}
+
+/* Styling for the text on the bottom of the ending screen. */
+.haveANiceMeal {
+    font-size: 4vh;
+    margin-top: 10px;
+}
+
+
+
+/* /// PAGE MEDIA-QUERIES /// */
+
+/* Grows the size of the three dish-inputs when the screen gets big enough. */
+@media (min-width: 1500px) {
+    .styledInput {
+        min-width: 20vw;
+    }
+}
+
+/* Styles the three dish-inputs when the screen gets too small. */
+@media (max-width: 600px) {
+    .inputs {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .styledInput {
+        min-width: 60vw;
+    }
+}
