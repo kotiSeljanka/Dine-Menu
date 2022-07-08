@@ -168,7 +168,7 @@ body {
     display: block;
     cursor: default;
 
-    transform: translateY(-100vh);
+    top: -100vh;
     transition: transform 1s ease-in-out;
 }
 
@@ -177,7 +177,7 @@ Class set on the ending screen container when all of the three dish-inputs are l
 Brings the ending screen to the page. 
 */
 .screenVisible {
-    transform: translateY(0vh);
+    transform: translateY(100vh);
 }
 
 /* Container for the button that closes the ending screen. */
